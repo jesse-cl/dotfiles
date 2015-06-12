@@ -12,6 +12,8 @@ Plug 'mtth/scratch.vim'
 Plug 'saltstack/salt-vim'
 Plug 'evanmiller/nginx-vim-syntax'
 Plug 'https://github.com/int3/vim-extradite.git'
+Plug 'scrooloose/syntastic'
+Plug 'rking/ag.vim'
 
 " themes
 Plug 'https://github.com/tomasr/molokai.git'

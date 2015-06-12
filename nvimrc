@@ -122,15 +122,6 @@ nnoremap k gk
 " ================= Colors ========================
 colorscheme molokai
 "
-" ctrlp
-if exists(":CtrlP")
-  let g:ctrlp_max_files = 0
-  let g:ctrlp_open_new_file = 'r'
-  let g:ctrlp_open_multiple_files = 'i'
-  let g:ctrlp_show_hidden = 0
-  let g:ctrlp_arg_map = 1
-  "noremap <leader>b :CtrlPBuffer<CR>
-endif
 
 "improve autocomplete menu color
 " dont need this since we have nice colors from solarize
@@ -206,6 +197,17 @@ if has("autocmd")
       autocmd bufwritepost .nvimrc source %
      augroup END
 
+endif
+
+" ==================== CtrlP   ====================
+" ctrlp
+if exists(":CtrlP")
+  let g:ctrlp_max_files = 0
+  let g:ctrlp_open_new_file = 'r'
+  let g:ctrlp_open_multiple_files = 'i'
+  let g:ctrlp_show_hidden = 0
+  let g:ctrlp_arg_map = 1
+  "noremap <leader>b :CtrlPBuffer<CR>
 endif
 
 " ==================== AirLine ====================

@@ -62,6 +62,12 @@ set noswapfile
 set nobackup
 set nowb
 
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+
+set undodir=~/.nvim/backups
+set undofile
+
 " =======Indentation ===========
 set autoindent "Copy indent from current line when starting a new line
 set smartindent

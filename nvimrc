@@ -137,6 +137,8 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader><leader> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
+" toggle cursorcolumn
+nnoremap <leader>\| :set cursorcolumn!<cr>
 
 " =================== AutoCmd ======================
 if has("autocmd")

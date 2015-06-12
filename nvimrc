@@ -194,3 +194,6 @@ if has("autocmd")
      augroup END
 
 endif
+
+" ==================== AirLine ====================
+let g:airline#extensions#tabline#enabled = 1

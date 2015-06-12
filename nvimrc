@@ -132,6 +132,17 @@ if exists(":CtrlP")
   "noremap <leader>b :CtrlPBuffer<CR>
 endif
 
+"improve autocomplete menu color
+" dont need this since we have nice colors from solarize
+"        highlight Pmenu ctermbg=238 gui=bold
+"highlight BadWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 " =================== Custom Mappings ==============
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader><leader> :noh<cr>
@@ -199,4 +210,4 @@ endif
 
 " ==================== AirLine ====================
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0

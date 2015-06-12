@@ -127,9 +127,6 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
-" Will allow you to use :w!! to write to a file using sudo if you forgot to sudo
-cmap w!! %!sudo tee > /dev/null %
-
 " ================= Colors ========================
 colorscheme molokai
 "

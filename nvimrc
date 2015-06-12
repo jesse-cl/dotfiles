@@ -18,7 +18,7 @@ Plug 'https://github.com/tomasr/molokai.git'
 
 call plug#end()
 "
-" ================ General Config ====================
+" =================== General Config ====================
 
 set backspace=indent,eol,start " Allow backspace in insert mode
 set esckeys                    " Function keys that start with an <Esc> are recognized in Insert mode
@@ -33,6 +33,7 @@ set visualbell                 " Use visual bell instead of beeping
 set mls=5                      " search first/last lines for modeline
 set showmatch                  " When a bracket is inserted, briefly jump to the matching one.
 set cursorline                 " Highlight the screen line of the cursor with CursorLine
+"set cursorcolumn               " vertical cursorline
 set nostartofline              " Try to preserve column where cursor is positioned.
 set ls=2                       " show a status line even when only one window is shown
 set shm=at                     " short message
@@ -46,14 +47,14 @@ set textwidth=79
 set formatoptions=qrn1
 set lazyredraw                 " When this option is set, the screen will not be redrawn while executing macros, registers and other commands that have not been typed.  Also, updating the window title is postponed.  To force an update use |:redraw|.
 
-" ================ Search Settings  =================
+" =================== Search Settings  =================
 
 set incsearch        "Find the next match as we type the search
 set hlsearch         "Hilight searches by default
 set viminfo='100,f1  "Save up to 100 marks, enable capital marks
 "set viminfo=%,'50,\"100,:100,n~/.viminfo
 
-" ================ Turn Off Swap Files ==============
+" =================== Turn Off Swap Files ==============
 
 set noswapfile
 set nobackup
@@ -76,13 +77,13 @@ set wrap         "wrap lines
 set linebreak    "Wrap lines at convenient points
 
 
-" ================ Folds ============================
+" =================== Folds ============================
 
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
-" ================ Completion =======================
+" =================== Completion =======================
 
 set wildmode=list:longest         " When more than one match, list all matches and complete first match.
 
@@ -98,13 +99,13 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
-" ================ Scrolling ========================
+" =================== Scrolling ========================
 
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-" =============== Navigation ========================
+" =================== Navigation ========================
 
 " disable arrow keys for navigation
 nnoremap <up> <nop>
@@ -118,7 +119,8 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
-
+" ================= Colors ========================
+colorscheme molokai
 "
 " ctrlp
 if exists(":CtrlP")
@@ -130,13 +132,13 @@ if exists(":CtrlP")
   "noremap <leader>b :CtrlPBuffer<CR>
 endif
 
-" ============== Custom Mappings ==============
+" =================== Custom Mappings ==============
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader><leader> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
-" ============= AutoCmd ======================
+" =================== AutoCmd ======================
 if has("autocmd")
     augroup content
         autocmd!

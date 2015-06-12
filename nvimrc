@@ -141,9 +141,14 @@ if has("autocmd")
     augroup content
         autocmd!
 
+        "ruby
         autocmd BufNewFile *.rb 0put ='# vim: set sw=4 ts=4 et :' |
                     \ 0put ='#!/usr/bin/env ruby' | set sw=4 ts=4 et |
                     \ norm G
+        autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+        autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+        autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+        autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
         autocmd BufNewFile *.lua 0put ='# vim: set sw=4 ts=4 et :' |
                     \ 0put ='#!/usr/bin/env lua' | set sw=4 ts=4 et |
@@ -162,34 +167,28 @@ if has("autocmd")
                     \ 0put ='#!/usr/bin/env python' | set sw=4 ts=4 et |
                     \ norm G
 "        autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
+        autocmd BufRead,BufNewFile *.py,*.pyw match ExtraWhitespace /^\t\+/
+        autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match ExtraWhitespace /\s\+$/
+        autocmd Filetype python let python_highlight_all=1
+        autocmd Filetype python set nocindent
 
         autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
         au! BufRead,BufNewFile *.mkd   setfiletype mkd
 
-        "ruby
-        autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-        autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-        autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-        autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-        autocmd FileType mail set tw=72 "usefull for Mutt
-        autocmd Filetype python let python_highlight_all=1
-        autocmd Filetype python set nocindent
-        " Execute file being edited with <Shift> + e:
-        autocmd Filetype python map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
         autocmd BufRead,BufNewFile *.js set ft=javascript.jquery
         autocmd BufRead,BufNewFile *.js.haml set ft=javascript.jquery
         autocmd BufRead,BufNewFile *.js.erb set ft=javascript.jquery
         autocmd BufRead,BufNewFile *.pp set ft=puppet
         autocmd Bufread,BufNewFile Makefile* set noexpandtab
         " Display tabs at the beginning of a line in Python mode as bad.
-        autocmd BufRead,BufNewFile *.py,*.pyw match ExtraWhitespace /^\t\+/
         " Make trailing whitespace be flagged as bad.
-        autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match ExtraWhitespace /\s\+$/
 
     augroup END
-    " Source the vimrc file after saving it. This way, you don't have to reload Vim to see the changes.
-     augroup myvimrchooks
+
+    " Source the nvimrc file after saving it. This way, you don't have to reload Vim to see the changes.
+     augroup mynvimrchooks
       au!
-      autocmd bufwritepost .vimrc source %
+      autocmd bufwritepost .nvimrc source %
      augroup END
+
 endif

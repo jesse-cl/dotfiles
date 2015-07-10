@@ -53,20 +53,11 @@ set lazyredraw                 " When this option is set, the screen will not be
 
 set incsearch        "Find the next match as we type the search
 set hlsearch         "Hilight searches by default
+" viminfo stores the the state of your previous editing session
+set viminfo+=n~/.nvim/viminfo
 set viminfo='100,f1  "Save up to 100 marks, enable capital marks
 "set viminfo=%,'50,\"100,:100,n~/.viminfo
 
-" =================== Turn Off Swap Files ==============
-
-set noswapfile
-set nobackup
-set nowb
-
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-
-set undodir=~/.nvim/backups
-set undofile
 
 " =======Indentation ===========
 set autoindent "Copy indent from current line when starting a new line
@@ -115,17 +106,26 @@ set sidescroll=1
 
 " =================== Navigation ========================
 
-" disable arrow keys for navigation
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+" change arrow key mapping.
+" left and right change buffers
+" up and down will move lines
+nnoremap <Down> :m+<CR>==
+nnoremap <Up> :m-2<CR>==
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+nnoremap <left> :bp<cr>
+nnoremap <right> :bn<cr>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
+
+" ================= mouse  ========================
+set mouse=
 
 " ================= Colors ========================
 colorscheme molokai
@@ -215,9 +215,32 @@ if exists(":CtrlP")
   let g:ctrlp_open_multiple_files = 'i'
   let g:ctrlp_show_hidden = 0
   let g:ctrlp_arg_map = 1
+  "let g:ctrlp_working_path_mode = '~/git'
+  let g:ctrlp_working_path_mode = 0
   "noremap <leader>b :CtrlPBuffer<CR>
 endif
 
 " ==================== AirLine ====================
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 0
+
+
+" ==================== backups ====================
+if isdirectory($HOME . '/.nvim/backup') == 0
+  :silent !mkdir -p ~/.nvim/backup >/dev/null 2>&1
+endif
+set backupdir=~/.nvim/backup//
+set backup
+
+if isdirectory($HOME . '/.nvim/swap') == 0
+  :silent !mkdir -p ~/.nvim/swap >/dev/null 2>&1
+endif
+set directory=~/.nvim/swap//
+set undofile
+set undodir=~/.nvim/undo//
+
+
+" Automatically create .backup directory, writable by the group.
+if filewritable(".") && ! filewritable(".nvim/backup")
+  silent execute '!umask 002; mkdir .nvim/backup'
+endif

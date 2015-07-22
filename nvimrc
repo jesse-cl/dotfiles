@@ -123,6 +123,8 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
+" set some mappings for :term
+tnoremap <Esc> <C-\><C-n>
 
 " ================= mouse  ========================
 set mouse=

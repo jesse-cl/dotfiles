@@ -5,7 +5,7 @@ call plug#begin('~/.nvim/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/gregsexton/gitv.git'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'junegunn/vim-easy-align'
 Plug 'mtth/scratch.vim'
@@ -14,6 +14,8 @@ Plug 'evanmiller/nginx-vim-syntax'
 Plug 'https://github.com/int3/vim-extradite.git'
 Plug 'scrooloose/syntastic'
 Plug 'rking/ag.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'https://github.com/xolox/vim-lua-ftplugin.git'
 
 " themes
 Plug 'https://github.com/tomasr/molokai.git'
@@ -246,3 +248,4 @@ set undodir=~/.nvim/undo//
 if filewritable(".") && ! filewritable(".nvim/backup")
   silent execute '!umask 002; mkdir .nvim/backup'
 endif
+
